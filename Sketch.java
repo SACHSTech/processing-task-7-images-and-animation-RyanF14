@@ -1,14 +1,19 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Sketch extends PApplet {
 	
+  float circley = 0;
+  float circlex = 380;
+  float vely = 3;
+  float velx = 3;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
   public void settings() {
 	// put your size call here
-    size(400, 400);
+    size(600, 400);
   }
 
   /** 
@@ -16,7 +21,9 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    background(210, 255, 173);
+    background(188);
+    PImage grid = loadImage("boing!background.png");
+    image(grid,0,0);
   }
 
   /**
@@ -25,11 +32,23 @@ public class Sketch extends PApplet {
   public void draw() {
 	  
 	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+  background(32);
+    PImage boing = loadImage("Boing_Ball.png");
+    
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    ellipse(circlex,circley,150,150);
+    circlex = circlex + velx;
+    circley = circley + vely; 
+    if(circley > height) {
+      vely = (vely = (-20));
+      
+    }
+    else{
+      vely = (vely +1 );
+    }
+    if(circlex > width || circlex < 0){
+      velx = (velx*(-1));
+    }
   }
   
   // define other methods down here.
