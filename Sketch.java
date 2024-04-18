@@ -19,6 +19,8 @@ public class Sketch extends PApplet {
   float vely = 3;
   float velx = 3;
   float radius = 75;
+  float shrek = 320;
+  float shrekvel = 1;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -45,7 +47,15 @@ public class Sketch extends PApplet {
 	  
 	//Generate background image
   PImage grid = loadImage("grid.png");
+  PImage shronk = loadImage("shronked.png");
+  shronk.resize(100, 100);
   background(grid);
+  image(shronk,shrek,0);
+  shrek = shrek+shrekvel;
+  if(shrek+100 >width|| shrek-100 < 0 ){
+    shrekvel = (shrekvel * -1);
+  }
+  
     //PImage boing = loadImage("Boing_Ball.png");
     
     //draw circle
