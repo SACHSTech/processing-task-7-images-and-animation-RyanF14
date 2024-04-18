@@ -7,6 +7,7 @@ public class Sketch extends PApplet {
   float circlex = 380;
   float vely = 3;
   float velx = 3;
+  float radius = 75;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -22,7 +23,7 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(188);
-    PImage grid = loadImage("boing!background.png");
+    PImage grid = loadImage("grid.png");
     image(grid,0,0);
   }
 
@@ -32,21 +33,22 @@ public class Sketch extends PApplet {
   public void draw() {
 	  
 	// sample code, delete this stuff
-  background(32);
+  PImage grid = loadImage("grid.png");
+  background(grid);
     PImage boing = loadImage("Boing_Ball.png");
     
 
-    ellipse(circlex,circley,150,150);
+    ellipse(circlex,circley,radius*2,radius*2);
     circlex = circlex + velx;
     circley = circley + vely; 
-    if(circley > height) {
+    if(circley > height-90) {
       vely = (vely = (-20));
       
     }
     else{
       vely = (vely +1 );
     }
-    if(circlex > width || circlex < 0){
+    if(circlex > width - 75 || circlex < 0 + 75){
       velx = (velx*(-1));
     }
   }
